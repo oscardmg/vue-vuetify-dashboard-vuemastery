@@ -1,28 +1,42 @@
 <template>
-  <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
-  </div>
+  <v-app>
+    <v-card width="400" class="mx-auto mt-5">
+      <v-card-title class="pb-0">
+        <h1>Login</h1>
+      </v-card-title>
+      <v-card-text>
+        <v-form>
+          <v-text-field
+              label="Username"
+              prepend-icon="account_circle"
+          />
+          <v-text-field
+              :type="showPassword ? 'text' : 'password'"
+              label="Password"
+              prepend-icon="lock"
+              :append-icon="showPassword ? 'visibility' : 'visibility_off'"
+              @click:append="showPassword = !showPassword"
+          />
+        </v-form>
+      </v-card-text>
+      <v-divider></v-divider>
+      <v-card-actions>
+        <v-btn color="success">Register</v-btn>
+        <v-spacer></v-spacer>
+        <v-btn color="info">Login</v-btn>
+      </v-card-actions>
+    </v-card>
+  </v-app>
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
 
-export default {
-  name: 'app',
-  components: {
-    HelloWorld
+  export default {
+    name: 'App',
+    data () {
+      return {
+        showPassword: false
+      }
+    }
   }
-}
 </script>
-
-<style>
-#app {
-  font-family: 'Avenir', Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  text-align: center;
-  color: #2c3e50;
-  margin-top: 60px;
-}
-</style>
